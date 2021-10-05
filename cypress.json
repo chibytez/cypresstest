@@ -1,0 +1,11 @@
+{
+    "chromeWebSecurity": false,
+    "defaultCommandTimeout": 10000,
+    "pageLoadTimeout": 120000,
+    "env": {
+        "PayzoneUrl":"https://uat.payzone.ng/",
+        "UserEmail": "aniakuchibuike@yahoo.com",
+        "UserPassword": "password",
+        "CardNumber":"5015015015015015"
+    }
+}
