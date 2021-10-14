@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Payzoe UI Test", ()=> {
-  before('visit payzone',()=>{
+  before('visit url',()=>{
       cy.visit(Cypress.env('PayzoneUrl'))
       cy.url().then(value =>{
           cy.log("url is:", value)
@@ -21,7 +21,8 @@ describe("Payzoe UI Test", ()=> {
       cy.contains('Your Wallet')   
   })
 
-  it('buy times from market place', ()=>{
+
+  it(' order and make payment from market place', ()=>{
     cy.get('span[class=category-item__text]').eq(7).click()
     cy.get('[class=view-store]').eq('2').click({force:true})
     cy.get('button[class=pz-btn]').eq('3').click({force:true})
@@ -33,10 +34,15 @@ describe("Payzoe UI Test", ()=> {
     cy.get('span[class=start]').eq(0).click()
     cy.get('input[type=password]').type(Cypress.env('WalletPassword'))
     cy.get('span[class=start]').eq(1).click()
+    cy.contains("Payment was successful")
+    cy.contains("Payzone Receipt")
     cy.get('button[class=drawer__close]').click()
-   
+  })
 
-
+  it('change background colour', ()=>{
+    cy.get('[title="Change Theme"]').click()
+    cy.wait(1000)
+    cy.get('[title="Change Theme"]').click()
   })
 
 
