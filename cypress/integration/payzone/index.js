@@ -45,6 +45,34 @@ describe("Payzoe UI Test", ()=> {
     cy.get('[title="Change Theme"]').click()
   })
 
+  it('should be able to add a store', ()=>{
+    cy.get('span[class=category-item__text]').eq(6).click()
+    cy.get('span[class=start]').click()
+    cy.contains('Add Product')
+    cy.get('input[name=product-name]').type('testing')
+    cy.get('input[id=amountInput]').type('3000')
+    cy.get('input[name=product-sku]').type('306')
+    cy.get('input[name=weight]').type('6')
+    cy.get('input[name=quantity]').type('20')
+    cy.get('textarea[name=description]').type('we are testing')
+    cy.get('span[class=start]').eq(1).click()
+    cy.contains('Success')
+    cy.contains('Your store')
+    cy.get('button[class=drawer__close]').click()
+
+  })
+
+  it('should delete store', ()=>{
+    cy.get('span[class=category-item__text]').eq(6).click()
+    cy.get('div[class=product-item__main]').eq(1).click()
+    cy.wait(1000)
+    cy.get('div[class=ui-dropdown]').click()
+    cy.get('.menu-item-cta.text-danger').click()
+    cy.get('input[type=text]').type('testing')
+    cy.get('.dg-btn.dg-btn--ok.dg-pull-right').click()
+
+  })
+
 
 
 
