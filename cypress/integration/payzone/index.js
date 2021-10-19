@@ -73,6 +73,14 @@ describe("Payzoe UI Test", ()=> {
 
   })
 
+  it('should view transaction history',()=>{
+    cy.get('.profile-button.pz-btn.pz-btn--primary.pz-btn--round').click()
+    cy.get('.icon.mr-3.icon--md').eq(0).click()
+    cy.contains('Payments made')
+    cy.get('.pz-btn.pz-btn--secondary.pz-btn--wide').click()
+    cy.get('button[class=drawer__close]').click()
+  })
+
 
 
 
