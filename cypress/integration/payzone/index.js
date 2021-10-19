@@ -73,7 +73,7 @@ describe("Payzoe UI Test", ()=> {
 
   })
 
-  it('should view transaction history',()=>{
+  it.only('should view transaction history',()=>{
     cy.get('.profile-button.pz-btn.pz-btn--primary.pz-btn--round').click()
     cy.get('.icon.mr-3.icon--md').eq(0).click()
     cy.contains('Payments made')
@@ -82,7 +82,10 @@ describe("Payzoe UI Test", ()=> {
   })
 
 
-
+ after('should log out', ()=>{
+  cy.get('.profile-button.pz-btn.pz-btn--primary.pz-btn--round').click()
+  cy.get('.icon.mr-3.icon--md').eq(3).click()
+ })
 
 
   // it('Add Fund to Wallet',()=>{
