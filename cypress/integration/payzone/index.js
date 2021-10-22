@@ -73,12 +73,31 @@ describe("Payzoe UI Test", ()=> {
 
   })
 
-  it.only('should view transaction history',()=>{
+  it('should view transaction history',()=>{
     cy.get('.profile-button.pz-btn.pz-btn--primary.pz-btn--round').click()
     cy.get('.icon.mr-3.icon--md').eq(0).click()
     cy.contains('Payments made')
     cy.get('.pz-btn.pz-btn--secondary.pz-btn--wide').click()
     cy.get('button[class=drawer__close]').click()
+  })
+
+  it('should pay for a product', ()=>{
+    cy.get('span[class=category-item__text]').eq(8).click()
+    cy.get('.category-item__box').eq(26).click()
+    cy.contains('OTHERS')
+    cy.get('.product__name').eq(3).click()
+    cy.contains('ENTER TRANSACTION DETAILS')
+    cy.get('[name=DepositorName]').type("Regina Anyaso")
+    cy.get('[name=DepositorMobileNumber]').type('07060848195')
+    cy.get('[name=Amount]').type('5000')
+    cy.get('.pz-btn.pz-btn--lg.position-relative.pz-btn--primary.pz-btn--wide.has--end').click()
+    cy.get('span[class=start]').eq(0).click()
+    cy.get('input[type=password]').type(Cypress.env('WalletPassword'))
+    cy.get('.pz-btn.pz-btn--lg.position-relative.wallet-cta.pz-btn--primary.pz-btn--wide').click()
+    cy.wait(5000)
+    cy.contains('Thank you for using payzone')
+    cy.get('button[class=drawer__close]').click()
+    
   })
 
 
